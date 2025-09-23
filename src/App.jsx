@@ -9,7 +9,7 @@ import PrpfilePage from './Pages/ProfilePage/PrpfilePage'
 import NotfoundPage from './Pages/NotfoundPage/NotfoundPage'
 import ProtuctedRoute from './ProtectedRoutes/ProtuctedRoute'
 import ProtuctrdAuthRoute from './ProtectedRoutes/ProtuctrdAuthRoute'
-import Login from './Pages/Login/login'
+import Login from './Pages/Login/Login'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
