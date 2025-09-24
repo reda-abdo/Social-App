@@ -4,14 +4,14 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod';
 import { registerSchema } from '../../Schemas/RegisterSchema';
 import { registerApi } from '../../services/authServices';
-import { Navigate, useNavigate,Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 export default function Register() {
 
   const [isLoding, setIsLoding] = useState(false)
   const [errorMsg, setErrorMsg] = useState('')
   const [succsesMsg, setSuccsesMsg] = useState('')
-  const navigate =useNavigate()
+  const navigate = useNavigate()
 
   const { handleSubmit, register, formState: { errors }, reset } = useForm({
     defaultValues: {
@@ -40,9 +40,9 @@ export default function Register() {
       reset()
       setErrorMsg('')
       setSuccsesMsg(data.message)
-      setTimeout(()=>{
+      setTimeout(() => {
         navigate('/login')
-      },3000)
+      }, 3000)
     }
   }
 
@@ -57,18 +57,16 @@ export default function Register() {
           <Input isInvalid={Boolean(errors.password?.message)} errorMessage={errors.password?.message} variant="bordered" label="Password" type="password" {...register('password')} />
           <Input isInvalid={Boolean(errors.rePassword?.message)} errorMessage={errors.rePassword?.message} variant="bordered" label="rePassword" type="password" {...register('rePassword')} />
           <Input isInvalid={Boolean(errors.dateOfBirth?.message)} errorMessage={errors.dateOfBirth?.message} variant="bordered" label="Date" type="date" {...register('dateOfBirth')} />
-          <Select isInvalid={Boolean(errors.gender?.message)} errorMessage={errors.gender?.message} variant="bordered" label="Select an animal" {...register('gender')}>
-
+          <Select isInvalid={Boolean(errors.gender?.message)} errorMessage={errors.gender?.message} variant="bordered" label="Select an gender" {...register('gender')}>
             <SelectItem key={'male'}>Male</SelectItem>
             <SelectItem key={'female'}>Female</SelectItem>
-
           </Select>
           <Button isLoading={isLoding} type='submit' color="primary" variant="bordered">
             Register
           </Button>
           {errorMsg && <p className='text-sm bg-red-200 rounded-md p-2 text-red-800 text-center mt-0'>{errorMsg}</p>}
           {succsesMsg && <p className='text-sm bg-green-200 rounded-md p-2 text-green-800 text-center mt-0'>{succsesMsg}</p>}
-          <p> Aurady have a count??  <Link  to={'/login'} className=' text-green-900 font-medium'> Login now</Link> </p>
+          <p> Aurady have a count??  <Link to={'/login'} className=' text-green-900 font-medium'> Login now</Link> </p>
 
 
         </div>
